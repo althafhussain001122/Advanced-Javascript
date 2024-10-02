@@ -1,0 +1,16 @@
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    
+    this.sayHello = function() {
+        console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+    };
+}
+
+// Example of using the Person constructor
+const person1 = new Person("Alice", 30);
+person1.sayHello(); // Output: Hello, my name is Alice and I am 30 years old.
+
+The Person constructor initializes name and age.
+The sayHello method prints a greeting that includes the person's name and age.
+You can create a new instance of Person using the new keyword and call the sayHello method on that instance.

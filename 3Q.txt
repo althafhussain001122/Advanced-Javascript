@@ -1,0 +1,69 @@
+To create a Calculator object that supports method chaining for the operations add, subtract, multiply, and divide, we can return the Calculator object (this) from each method. This allows you to call multiple methods in a single expression. Here's how you can implement it:
+
+const Calculator = function() {
+    this.result = 0; // Initialize the result
+
+    // Add method
+    this.add = function(value) {
+        this.result += value;
+        return this; // Enable method chaining
+    };
+
+    // Subtract method
+    this.subtract = function(value) {
+        this.result -= value;
+        return this; // Enable method chaining
+    };
+
+    // Multiply method
+    this.multiply = function(value) {
+        this.result *= value;
+        return this; // Enable method chaining
+    };
+
+    // Divide method
+    this.divide = function(value) {
+        if (value !== 0) {
+            this.result /= value;
+        } else {
+            console.error("Cannot divide by zero.");
+        }
+        return this; // Enable method chaining
+    };
+
+    // Method to get the current result
+    this.getResult = function() {
+        return this.result;
+    };
+
+    // Method to reset the calculator
+    this.reset = function() {
+        this.result = 0;
+        return this; // Enable method chaining
+    };
+};
+
+// Example of using the Calculator
+const calc = new Calculator();
+
+const finalResult = calc.add(10)
+    .subtract(3)
+    .multiply(4)
+    .divide(2)
+    .getResult(); // Final result: (10 - 3) * 4 / 2 = 14
+
+console.log(finalResult); // Output: 14
+
+Calculator Object: The Calculator constructor initializes result to 0.
+
+Arithmetic Methods:
+
+Each of the methods (add, subtract, multiply, divide) modifies the result property based on the operation performed.
+Each method returns this to enable method chaining.
+getResult Method: This method returns the current value of result.
+
+reset Method: This method resets the result to 0 and also returns this to maintain chaining.
+
+Usage Example: The example demonstrates method chaining:
+
+Starting with 0, it adds 10, subtracts 3, multiplies by 4, divides by 2, and finally retrieves the result, which is 14.

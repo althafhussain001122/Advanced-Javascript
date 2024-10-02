@@ -1,0 +1,54 @@
+o create an Employee constructor that inherits from the Person constructor, you can use JavaScript's prototypal inheritance. Below is an example that adds an additional property designation and a method getDetails to display the employee's details:
+
+// Person constructor
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+Person.prototype.sayHello = function() {
+    console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+};
+
+// Employee constructor
+function Employee(name, age, designation) {
+    // Call the Person constructor to initialize name and age
+    Person.call(this, name, age);
+    this.designation = designation;
+}
+
+// Inherit from Person
+Employee.prototype = Object.create(Person.prototype);
+Employee.prototype.constructor = Employee;
+
+// Add getDetails method to Employee
+Employee.prototype.getDetails = function() {
+    console.log(`Name: ${this.name}, Age: ${this.age}, Designation: ${this.designation}`);
+};
+
+// Example of using the Employee constructor
+const employee1 = new Employee("Bob", 28, "Software Developer");
+employee1.sayHello();      // Output: Hello, my name is Bob and I am 28 years old.
+employee1.getDetails();    // Output: Name: Bob, Age: 28, Designation: Software Developer
+
+Explanation:
+Person Constructor: This remains unchanged. It initializes name and age, and has a method sayHello.
+
+Employee Constructor:
+
+Calls the Person constructor using Person.call(this, name, age); to set the name and age properties.
+Initializes a new property, designation.
+Inheritance:
+
+Employee.prototype = Object.create(Person.prototype); sets up inheritance, allowing Employee to access methods defined in Person.
+Employee.prototype.constructor = Employee; ensures that the constructor property of Employee points to Employee.
+getDetails Method: This method prints the employee's details, including name, age, and designation.
+
+Example Usage: An instance of Employee is created, and both sayHello and getDetails methods are called to demonstrate the functionality.
+
+
+
+
+
+
+

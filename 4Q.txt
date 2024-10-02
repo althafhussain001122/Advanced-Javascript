@@ -1,0 +1,52 @@
+To demonstrate polymorphism in JavaScript using a base class Shape and two subclasses Circle and Rectangle, we can define the classes with a draw method. Each subclass will override the draw method to provide its own implementation. Here’s how you can implement this:
+
+// Base class
+class Shape {
+    draw() {
+        console.log("Drawing a shape");
+    }
+}
+
+// Subclass Circle
+class Circle extends Shape {
+    draw() {
+        console.log("Drawing a circle");
+    }
+}
+
+// Subclass Rectangle
+class Rectangle extends Shape {
+    draw() {
+        console.log("Drawing a rectangle");
+    }
+}
+
+// Function to demonstrate polymorphism
+function renderShape(shape) {
+    shape.draw(); // Calls the draw method of the passed shape instance
+}
+
+// Example usage
+const circle = new Circle();
+const rectangle = new Rectangle();
+
+renderShape(circle);    // Output: Drawing a circle
+renderShape(rectangle); // Output: Drawing a rectangle
+
+Explanation:
+Base Class Shape:
+
+Defines a method draw that provides a generic message.
+Subclass Circle:
+
+Inherits from Shape and overrides the draw method to provide a specific implementation for circles.
+Subclass Rectangle:
+
+Inherits from Shape and overrides the draw method to provide a specific implementation for rectangles.
+Polymorphism:
+
+The renderShape function takes a Shape instance as an argument and calls its draw method. Due to polymorphism, the method invoked depends on the actual object type passed to it, allowing different implementations to be executed.
+Example Usage:
+
+Instances of Circle and Rectangle are created.
+When renderShape is called with each instance, the appropriate draw method is invoked, demonstrating polymorphism in action.
